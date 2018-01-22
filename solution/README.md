@@ -2,7 +2,7 @@ README
 ====
 
 >_"Hi FE Developer,_
-
+>
 >_Hope you are having a nice time in France.
 >Thank you very much for the UI you created and for the instructions on how to prep the project._
 >
