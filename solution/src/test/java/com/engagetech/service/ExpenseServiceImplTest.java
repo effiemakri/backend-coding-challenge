@@ -11,7 +11,9 @@ import java.util.HashSet;
 import java.util.Set;
 
 import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.mock;
+import static org.mockito.Matchers.any;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 
 public class ExpenseServiceImplTest {
 
@@ -37,5 +39,16 @@ public class ExpenseServiceImplTest {
         // check to see if the ExpenseService will return a Set with one object in it
         Set<Expense> expenses = service.getExpenses();
         assertEquals(expenses.size(), 1);
+    }
+
+    @Test
+    public void shouldSaveExpenseBeCalled_whenSaveExpenseIsCalled() {
+
+        // as the saveExpense method of ExpenseService returns a void, Mockito's doNothing() is used.
+        Mockito.doNothing().when(service).saveExpense(any(Expense.class));
+        
+        // call the saveExpense method once, and make sure that it was called properly
+        service.saveExpense(new Expense());
+        verify(service, times(1)).saveExpense(new Expense());
     }
 }
