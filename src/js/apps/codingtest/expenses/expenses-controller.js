@@ -40,15 +40,12 @@ app.controller("ctrlExpenses", ["$rootScope", "$scope", "config", "restalchemy",
 			var amount = $scope.newExpense.amount.toUpperCase();
 			if (amount.includes('EUR')) {
 				amount = clearAmount(amount);
-				console.log('after cleaning the amount ....' + amount);
 				var ratePromise = currencyService.getRate($scope.newExpense.date);
 				ratePromise.then(function(rate) {
 					// Convert the amount to GBP, and round off to two decimals
-					console.log(' Before conversion: amount and rate ' + amount + ' ' + rate);
 					$scope.newExpense.amount = Math.round((amount * rate) * 100)/100;
 					// Calculate the VAT:
 					$scope.newExpense.vat = $scope.newExpense.amount * (1 - 1/1.2);
-					console.log(' new expense ... in GBP ' + $scope.newExpense.amount + " and vat " + $scope.newExpense.vat);
 					// Post the converted expense via REST:
 					restExpenses.post($scope.newExpense).then(function() {
 						$scope.expenses.push($scope.newExpense);
