@@ -136,8 +136,9 @@ app.factory("restalchemy", [ "$rootScope", "$http", "$q", "$timeout", function($
 
 		// Define some functions to handle success and error results for this call
 		var successFunc = function(data, status) {
-			if ($this.config.success)
+			if ($this.config.success) {
 				$this.config.success(sanitiseRestData(data), status);
+			}
 		};
 
 		var errorFunc = function(data, status) {
@@ -268,19 +269,22 @@ app.factory("restalchemy", [ "$rootScope", "$http", "$q", "$timeout", function($
 	var httpPost = function($this, postdata, params) {
 		var config = { params: params, responseType: "json" };
 
-		if (postdata instanceof FormData)
+		if (postdata instanceof FormData) {
 			// do not override Content-Type for multi-part requests
 			config.headers = { "Content-Type": undefined };
-		else
+		}
+		else {
 			config.headers = {};
+		}
 
 		angular.extend(config.headers, $this.config.headers);
 		$http.post($this.endpoint, postdata, config).success(function(data, status, headers, config) {
 			// Invalidate any cached data that matches this endpoint
 			invalidateCachedEndpoints($this.config.root, $this.endpoint);
 
-			if ($this.config.success)
+			if ($this.config.success) {
 				$this.config.success(data, status);
+			}
 		}).error(function(data, status, headers, config) {
 			// If status requires authentication trigger a login
 			if ((status == 401) && ($this.config.authenticate)) {
