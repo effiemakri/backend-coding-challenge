@@ -33,3 +33,21 @@ In a terminal window in the 'solution' directory, on the command line type: `mvn
 Run the web-app backend
 --------------
 Once the build finished, run the application by typing: `java -jar ./target/backend-coding-challenge-0.0.1-SNAPSHOT.jar`. The backend will run on localhost:8081.
+
+Final Words
+===
+
+### Framework
+The web-app backend has been developed using the Spring Framework:
+* Spring Boot executable, 
+* SpringMVC for the web-functionality, 
+* Spring Data JPA for the persistence functionality using MySQL.
+
+### Application Server Used
+Spring Boot by default comes bundled with tomcat
+
+### Database used
+MySQL
+
+### Final notes
+The final code submitted has endeavoured to cover all the coding challenges.

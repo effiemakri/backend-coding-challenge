@@ -13,21 +13,16 @@ import java.util.Set;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Matchers.any;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
 
 public class ExpenseServiceImplTest {
 
-    ExpenseService service;
-
     @Mock
-    ExpenseRepository repository;
+    ExpenseService service;
 
     @Before
     public void setUp() throws Exception {
         // set up the Mocks
         MockitoAnnotations.initMocks(this);
-        service = new ExpenseServiceImpl(repository);
     }
 
     @Test

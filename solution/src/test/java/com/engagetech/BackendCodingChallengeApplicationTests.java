@@ -9,6 +9,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest
 public class BackendCodingChallengeApplicationTests {
 
+	// Will test to see that the Spring context loads properly
 	@Test
 	public void contextLoads() {
 	}
