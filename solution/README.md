@@ -26,8 +26,10 @@ The web-app backend saves the expenses submitted to a database, and it is config
 
 Compile the web-app backend
 --------------
-In the 'solution' directory, on the command line type: `mvn clean package`.
+You will need maven to build the backend application. Please make sure you have maven v3x installed on your machine.
+
+In a terminal window in the 'solution' directory, on the command line type: `mvn clean package`. This will build a backend and generate an executable jar.
 
 Run the web-app backend
 --------------
-
+Once the build finished, run the application by typing: `java -jar ./target/backend-coding-challenge-0.0.1-SNAPSHOT.jar`. The backend will run on localhost:8081.
