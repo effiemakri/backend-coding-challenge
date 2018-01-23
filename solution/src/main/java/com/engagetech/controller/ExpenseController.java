@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -34,7 +35,7 @@ public class ExpenseController {
         log.info("Retrieving the expenses from the database");
         Set<Expense> expenses = expenseService.getExpenses();
         if (expenses.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            return new ResponseEntity<>(new HashSet<>(), HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(expenses, HttpStatus.OK);
     }
@@ -44,7 +45,10 @@ public class ExpenseController {
     public ResponseEntity<?> saveExpense(@RequestBody Expense expense) {
 
         log.info("Saving the expense to the database");
-        expenseService.saveExpense(expense);
-        return new ResponseEntity<>(HttpStatus.CREATED);
+        Expense expenseReturned = expenseService.saveExpense(expense);
+        if (expenseReturned == null) {
+            return new ResponseEntity<>(new Expense(), HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(expenseReturned, HttpStatus.CREATED);
     }
 }

@@ -12,7 +12,7 @@ import java.util.Set;
 public interface ExpenseService {
     Set<Expense> getExpenses();
     Expense findById(Long id);
-    void saveExpense(Expense expense);
+    Expense saveExpense(Expense expense);
     void updateExpense(Expense expense);
     void deleteExpense(Long id);
     void deleteAllExpenses();

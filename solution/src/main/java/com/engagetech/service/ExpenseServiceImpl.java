@@ -41,9 +41,9 @@ public class ExpenseServiceImpl implements ExpenseService {
 
     // Save an expense
     @Override
-    public void saveExpense(Expense expense) {
+    public Expense saveExpense(Expense expense) {
         log.info("Saving an expense to the database: " + expense);
-        expenseRepository.save(expense);
+        return expenseRepository.save(expense);
     }
 
     // Update an expense - NOTE: this is not used for the coding challenge

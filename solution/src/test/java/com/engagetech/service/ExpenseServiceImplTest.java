@@ -1,6 +1,7 @@
 package com.engagetech.service;
 
 import com.engagetech.model.Expense;
+import com.engagetech.repository.ExpenseRepository;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
@@ -17,13 +18,16 @@ import static org.mockito.Mockito.verify;
 
 public class ExpenseServiceImplTest {
 
-    @Mock
     ExpenseService service;
+
+    @Mock
+    ExpenseRepository repository;
 
     @Before
     public void setUp() throws Exception {
         // set up the Mocks
         MockitoAnnotations.initMocks(this);
+        service = new ExpenseServiceImpl(repository);
     }
 
     @Test
@@ -42,13 +46,15 @@ public class ExpenseServiceImplTest {
     }
 
     @Test
-    public void shouldSaveExpenseBeCalled_whenSaveExpenseIsCalled() {
+    public void shouldReturnNewlyCreatedExpense_whenSaveExpenseIsCalled() {
 
-        // as the saveExpense method of ExpenseService returns a void, Mockito's doNothing() is used.
-        Mockito.doNothing().when(service).saveExpense(any(Expense.class));
-        
-        // call the saveExpense method once, and make sure that it was called properly
-        service.saveExpense(new Expense());
-        verify(service, times(1)).saveExpense(new Expense());
+        Expense expense = new Expense();
+        expense.setId(1L);
+
+        // instruct Mockito to return the newly created expense when saveExpense is called
+        Mockito.when(service.saveExpense(any(Expense.class))).thenReturn(expense);
+
+        // check to see that the returned expense is the same as the created one (check the ID of the Expense object that was return):
+        assertEquals(Long.valueOf(1L), service.saveExpense(new Expense()).getId());
     }
 }
