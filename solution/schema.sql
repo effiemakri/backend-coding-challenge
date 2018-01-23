@@ -7,7 +7,7 @@
 -- GRANT ALL ON *.* TO 'engagetechuser'@'localhost';
 -- GRANT ALL PRIVILEGES ON * . * TO 'engagetechuser'@'localhost';
 
-GRANT ALL PRIVILEGES ON *.* TO 'engagetechuser'@'localhost' IDENTIFIED BY 'engagetech';
+GRANT ALL PRIVILEGES ON `engagetechdb`.* TO 'engagetechuser'@'localhost' IDENTIFIED BY 'engagetech';
 
 -- MySQL Workbench Forward Engineering
 
