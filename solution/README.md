@@ -23,7 +23,7 @@ The web-app backend saves the expenses submitted to a database, and it is config
 > 1. Create a database user with the username `engagetechuser` and password `engagetech`.
 > 0. Create a database (`engagetechdb`), and a table `expenses`with columns `id`, `date`, `amount`, `vat` and `reason`. 
 
-`schema.sql`contains the necessary sql to perform the above. Please make sure you have `MySQL`. 
+`schema.sql`contains the necessary sql to perform the above. Please make sure you have `MySQL` running. 
 
 Compile the web-app backend
 --------------
