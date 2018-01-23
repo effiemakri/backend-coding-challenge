@@ -22,7 +22,8 @@ Create the database and the database user
 The web-app backend saves the expenses submitted to a database, and it is configured to connect to a pre-existing database with a specific name, as a specific user.
 > 1. Create a database user with the username `engagetechuser` and password `engagetech`.
 > 0. Create a database (`engagetechdb`), and a table `expenses`with columns `id`, `date`, `amount`, `vat` and `reason`. 
-(I've used mySQLWorkbench to create all the above with 'Forward Engineer' to generate the SQL - this is provided in the `schema.sql`. Please make sure you have `MySQL` running first). 
+
+`schema.sql`contains the necessary sql to perform the above. Please make sure you have `MySQL`. 
 
 Compile the web-app backend
 --------------
